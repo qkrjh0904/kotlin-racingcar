@@ -24,6 +24,17 @@ class StringCalculatorTest : FunSpec({
         // then
         answer shouldBe -2
     }
+
+    test("곱셈만 있는 문자열 식을 받아 계산할 수 있다.") {
+        // given
+        val expression = "1 * 2 * 3 * -4"
+
+        // when
+        val answer = calculate(expression)
+
+        // then
+        answer shouldBe -24
+    }
 })
 
 fun calculate(expression: String): Int {
@@ -37,6 +48,7 @@ fun calculate(expression: String): Int {
         when (operator) {
             "+" -> answer = answer plus number
             "-" -> answer = answer minus number
+            "*" -> answer = answer times number
         }
     }
 
@@ -49,4 +61,8 @@ infix fun Int.plus(other: Int): Int {
 
 infix fun Int.minus(other: Int): Int {
     return this.minus(other)
+}
+
+infix fun Int.times(other: Int): Int {
+    return this.times(other)
 }
