@@ -80,6 +80,18 @@ class StringCalculatorTest : BehaviorSpec({
             }
         }
     }
+
+    Given("입력값에 사칙연산 기호가 아닌 값이 들어가는 경우 IllegalArgumentException 을 던진다.") {
+        val expression = "1 ^ 2"
+
+        When("계산을 하면") {
+            Then("IllegalArgumentException 이 발생한다.") {
+                shouldThrowWithMessage<IllegalArgumentException>("사칙 연산 기호가 아닙니다.") {
+                    calculate(expression)
+                }
+            }
+        }
+    }
 })
 
 fun calculate(expression: String?): Int {
@@ -94,11 +106,12 @@ fun calculate(expression: String?): Int {
         val operator = splitExpression[index].trim()
         val number = splitExpression[index + 1].toInt()
 
-        when (operator) {
-            "+" -> answer = answer plus number
-            "-" -> answer = answer minus number
-            "*" -> answer = answer times number
-            "/" -> answer = answer div number
+        answer = when (operator) {
+            "+" -> answer plus number
+            "-" -> answer minus number
+            "*" -> answer times number
+            "/" -> answer div number
+            else -> throw IllegalArgumentException("사칙 연산 기호가 아닙니다.")
         }
     }
 
