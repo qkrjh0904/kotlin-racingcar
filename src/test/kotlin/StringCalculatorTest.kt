@@ -118,18 +118,10 @@ fun calculate(expression: String?): Int {
     return answer
 }
 
-infix fun Int.plus(other: Int): Int {
-    return this.plus(other)
-}
+infix fun Int.plus(other: Int) = this.plus(other)
 
-infix fun Int.minus(other: Int): Int {
-    return this.minus(other)
-}
+infix fun Int.minus(other: Int) = this.minus(other)
 
-infix fun Int.times(other: Int): Int {
-    return this.times(other)
-}
+infix fun Int.times(other: Int) = this.times(other)
 
-infix fun Int.div(other: Int): Int {
-    return this.div(other)
-}
+infix fun Int.div(other: Int) = this.div(other)
