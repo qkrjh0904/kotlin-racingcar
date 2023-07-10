@@ -1,54 +1,92 @@
-import io.kotest.core.spec.style.FunSpec
+import io.kotest.assertions.throwables.shouldThrowWithMessage
+import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 
-class StringCalculatorTest : FunSpec({
+class StringCalculatorTest : BehaviorSpec({
 
-    test("덧셈만 있는 문자열 식을 받아 계산할 수 있다.") {
-        // given
+    Given("덧셈만 있는 문자열이 주어진다.") {
         val expression = "1 + 2 + 3"
 
-        // when
-        val answer = calculate(expression)
+        When("계산을 하면") {
+            val answer = calculate(expression)
 
-        // then
-        answer shouldBe 6
+            Then("6이 니온다.") {
+                answer shouldBe 6
+            }
+        }
     }
 
-    test("뺄셈만 있는 문자열 식을 받아 계산할 수 있다.") {
-        // given
+    Given("뺄셈만 있는 문자열이 주어진다.") {
         val expression = "2 - 3 - 1"
 
-        // when
-        val answer = calculate(expression)
+        When("계산을 하면") {
+            val answer = calculate(expression)
 
-        // then
-        answer shouldBe -2
+            Then("결과값이 니온다.") {
+                answer shouldBe -2
+            }
+        }
     }
 
-    test("곱셈만 있는 문자열 식을 받아 계산할 수 있다.") {
-        // given
+    Given("곱셈만 있는 문자열이 주어진다.") {
         val expression = "1 * 2 * 3 * -4"
 
-        // when
-        val answer = calculate(expression)
+        When("계산을 하면") {
+            val answer = calculate(expression)
 
-        // then
-        answer shouldBe -24
+            Then("결과값이 니온다.") {
+                answer shouldBe -24
+            }
+        }
     }
 
-    test("나눗셈만 있는 문자열 식을 받아 계산할 수 있다.") {
-        // given
+    Given("나눗셈만 있는 문자열이 주어진다.") {
         val expression = "15 / 2 / -3"
 
-        // when
-        val answer = calculate(expression)
+        When("계산을 하면") {
+            val answer = calculate(expression)
 
-        // then
-        answer shouldBe -2
+            Then("결과값이 니온다.") {
+                answer shouldBe -2
+            }
+        }
+    }
+
+    Given("모든 연산자가 포함되어 있는 문자열이 주어진다.") {
+        val expression = "2 + 3 * 4 / 2"
+
+        When("계산을 하면") {
+            val answer = calculate(expression)
+
+            Then("결과값이 니온다.") {
+                answer shouldBe 10
+            }
+        }
+    }
+
+    Given("입력값이 null 이거나 빈 공백 문자일 경우 IllegalArgumentException 을 던진다.") {
+        val expression1 = "    "
+        val expression2 = null
+
+        When("계산을 하면") {
+            Then("IllegalArgumentException 이 발생한다.") {
+                shouldThrowWithMessage<IllegalArgumentException>("입력값을 다시 확인해주세요.") {
+                    calculate(expression1)
+                }
+
+                shouldThrowWithMessage<IllegalArgumentException>("입력값을 다시 확인해주세요.") {
+                    calculate(expression2)
+                }
+            }
+        }
     }
 })
 
-fun calculate(expression: String): Int {
+fun calculate(expression: String?): Int {
+    if (expression.isNullOrBlank()) {
+        throw IllegalArgumentException("입력값을 다시 확인해주세요.")
+    }
+
     val splitExpression = expression.split(" ")
     var answer = splitExpression[0].toInt()
 
