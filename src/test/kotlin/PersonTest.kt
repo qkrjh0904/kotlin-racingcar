@@ -4,23 +4,27 @@ import io.kotest.matchers.shouldBe
 
 class PersonTest : FunSpec({
 
-    test("Person 에 이름을 넣어 객체를 생성해본다.") {
-        val person = Person("박정호")
+    test("Person 을 named arguments 로 객체를 생성할 수 있다.") {
+        val person = Person(name = "박정호", age = 29, nickname = "바저호")
 
         person.name shouldBe "박정호"
+        person.age shouldBe 29
+        person.nickname shouldBe "바저호"
     }
 
-    test("Person 에 null 타입일 수 있는 인자에 대해 테스트 해본다.") {
-        val person = Person("박정호")
+    test("Person 의 nickname 을 null 가능하게 만들고, null 타입 인자를 넣고 객체를 생성할 수 있다.") {
+        val person = Person(name = "박정호", age = 29, nickname = null)
 
         person.name shouldBe "박정호"
+        person.age shouldBe 29
         person.nickname shouldBe null
     }
 
-    test("Person을 데이터 클래스로 만들어 보고 정상 동작 하는지 확인해본다.") {
-        val person = Person("박정호")
+    test("Person 을 데이터 클래스로 만들어도 정상동작 할 수 있다.") {
+        val person = Person(name = "박정호", age = 29, nickname = null)
 
         person.name shouldBe "박정호"
+        person.age shouldBe 29
         person.nickname shouldBe null
     }
 })
