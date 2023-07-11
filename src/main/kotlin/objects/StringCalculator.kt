@@ -1,5 +1,10 @@
 package objects
 
+import enums.Operator.DIV
+import enums.Operator.MINUS
+import enums.Operator.PLUS
+import enums.Operator.TIMES
+
 class StringCalculator(
     private val expression: String?
 ) {
@@ -23,11 +28,11 @@ class StringCalculator(
             val number = splitExpression[index + 1].toInt()
 
             answer = when (operator) {
-                "+" -> answer plus number
-                "-" -> answer minus number
-                "*" -> answer times number
-                "/" -> answer div number
-                else -> throw IllegalArgumentException("사칙 연산 기호가 아닙니다.")
+                PLUS.operator -> answer plus number
+                MINUS.operator -> answer minus number
+                TIMES.operator -> answer times number
+                DIV.operator -> answer div number
+                else -> throw IllegalArgumentException("$operator 는 사칙 연산 기호(+, -, *, /)가 아닙니다.")
             }
         }
 

@@ -91,13 +91,11 @@ class StringCalculatorTest : BehaviorSpec({
         When("계산기를 생성하면") {
             Then("IllegalArgumentException 이 발생한다.") {
                 shouldThrowExactly<IllegalArgumentException> {
-                    val calculator = StringCalculator(expression1)
-                    calculator.calculate()
+                    StringCalculator(expression1)
                 }
 
                 shouldThrowExactly<IllegalArgumentException> {
-                    val calculator = StringCalculator(expression2)
-                    calculator.calculate()
+                    StringCalculator(expression2)
                 }
             }
         }
@@ -108,7 +106,7 @@ class StringCalculatorTest : BehaviorSpec({
 
         When("계산을 하면") {
             Then("IllegalArgumentException 이 발생한다.") {
-                shouldThrowWithMessage<IllegalArgumentException>("사칙 연산 기호가 아닙니다.") {
+                shouldThrowExactly<IllegalArgumentException> {
                     val calculator = StringCalculator(expression)
                     calculator.calculate()
                 }
