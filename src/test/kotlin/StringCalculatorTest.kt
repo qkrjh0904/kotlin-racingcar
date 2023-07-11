@@ -113,4 +113,29 @@ class StringCalculatorTest : BehaviorSpec({
             }
         }
     }
+
+    Given("비정상적인 수식이 주어지면 IllegalArgumentException 을 던진다.") {
+        val expression = "****"
+        val expression2 = "1 3"
+        val expression3 = "1 3 4"
+
+        When("계산을 하면") {
+            Then("IllegalArgumentException 이 발생한다.") {
+                shouldThrowExactly<IllegalArgumentException> {
+                    val calculator = StringCalculator(expression)
+                    calculator.calculate()
+                }
+
+                shouldThrowExactly<IllegalArgumentException> {
+                    val calculator = StringCalculator(expression2)
+                    calculator.calculate()
+                }
+
+                shouldThrowExactly<IllegalArgumentException> {
+                    val calculator = StringCalculator(expression3)
+                    calculator.calculate()
+                }
+            }
+        }
+    }
 })
