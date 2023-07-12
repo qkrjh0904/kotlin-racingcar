@@ -10,7 +10,7 @@ import enums.Operator.MINUS
 import enums.Operator.PLUS
 import enums.Operator.TIMES
 
-private const val ZERO = 0
+private const val ZERO = 0.0
 
 class StringCalculator(
     private val expression: String?
@@ -28,10 +28,9 @@ class StringCalculator(
         }
     }
 
-    fun calculate(): Int {
+    fun calculate(): Double {
         val splitExpression = expression!!.split(DELIMITER_SPACE)
         splitExpression.map { it.trim() }
-        println(splitExpression)
 
         require(splitExpression.size % TWO == ONE) {
             EXPRESSION_COUNT_SHOULD_BE_ODD.message
@@ -55,15 +54,15 @@ class StringCalculator(
         return answer
     }
 
-    private fun toNumber(number: String): Int {
+    private fun toNumber(number: String): Double {
         try {
-            return number.toInt()
+            return number.toDouble()
         } catch (e: NumberFormatException) {
             throw IllegalArgumentException("${NOT_A_NUMBER.message} number=$number")
         }
     }
 
-    private fun Int.checkAndDiv(other: Int): Int {
+    private fun Double.checkAndDiv(other: Double): Double {
         require(other != ZERO) { CANNOT_DIVIDE_BY_ZERO.message }
         return this.div(other)
     }

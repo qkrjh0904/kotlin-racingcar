@@ -7,53 +7,53 @@ import objects.StringCalculator
 class StringCalculatorTest : BehaviorSpec({
 
     Given("덧셈을 할 수 있다.") {
-        val expression = "1 + 2"
+        val expression = "1.2 + 2.12"
 
         When("계산을 하면") {
             val calculator = StringCalculator(expression)
             val answer = calculator.calculate()
 
             Then("결과값이 니온다.") {
-                answer shouldBe 3
+                answer shouldBe (1.2 + 2.12)
             }
         }
     }
 
     Given("뺄셈을 할 수 있다.") {
-        val expression = "2 - 3"
+        val expression = "2 - 3.7"
 
         When("계산을 하면") {
             val calculator = StringCalculator(expression)
             val answer = calculator.calculate()
 
             Then("결과값이 니온다.") {
-                answer shouldBe -1
+                answer shouldBe (2 - 3.7)
             }
         }
     }
 
     Given("곱셈을 할 수 있다.") {
-        val expression = "2 * 0 * 3"
+        val expression = "2 * 0 * 3.2"
 
         When("계산을 하면") {
             val calculator = StringCalculator(expression)
             val answer = calculator.calculate()
 
             Then("결과값이 니온다.") {
-                answer shouldBe 0
+                answer shouldBe (2 * 0 * 3.2)
             }
         }
     }
 
     Given("나눗셈을 할 수 있다.") {
-        val expression = "15 / 2"
+        val expression = "15.2 / 2.1"
 
         When("계산을 하면") {
             val calculator = StringCalculator(expression)
             val answer = calculator.calculate()
 
             Then("결과값이 니온다.") {
-                answer shouldBe 7
+                answer shouldBe (15.2 / 2.1)
             }
         }
     }
@@ -72,14 +72,14 @@ class StringCalculatorTest : BehaviorSpec({
     }
 
     Given("다양한 연산자가 있는 문자열을 계산할 수 있다.") {
-        val expression = "2 + 3 * 4 / 2"
+        val expression = "2.3 + 3.7 * 4 / 2"
 
         When("계산을 하면") {
             val calculator = StringCalculator(expression)
             val answer = calculator.calculate()
 
             Then("결과값이 니온다.") {
-                answer shouldBe 10
+                answer shouldBe 12
             }
         }
     }
