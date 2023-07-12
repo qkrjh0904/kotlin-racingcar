@@ -11,14 +11,13 @@ import enums.Operator.PLUS
 import enums.Operator.TIMES
 
 private const val ZERO = 0
-private const val NEXT_INDEX = 1
 
 class StringCalculator(
     private val expression: String?
 ) {
 
     companion object {
-        private const val DELIMITER = " "
+        private const val DELIMITER_SPACE = " "
         private const val TWO = 2
         private const val ONE = 1
     }
@@ -30,7 +29,7 @@ class StringCalculator(
     }
 
     fun calculate(): Int {
-        val splitExpression = expression!!.split(DELIMITER)
+        val splitExpression = expression!!.split(DELIMITER_SPACE)
         splitExpression.map { it.trim() }
         println(splitExpression)
 
@@ -45,10 +44,10 @@ class StringCalculator(
             val number = toNumber(queue.removeFirst())
 
             answer = when (operator) {
-                PLUS.operator -> answer plus number
-                MINUS.operator -> answer minus number
-                TIMES.operator -> answer times number
-                DIV.operator -> answer div number
+                PLUS.operator -> answer.plus(number)
+                MINUS.operator -> answer.minus(number)
+                TIMES.operator -> answer.times(number)
+                DIV.operator -> answer.checkAndDiv(number)
                 else -> throw IllegalArgumentException("${NOT_A_OPERATOR.message} operator=$operator")
             }
         }
@@ -64,13 +63,7 @@ class StringCalculator(
         }
     }
 
-    infix fun Int.plus(other: Int) = this.plus(other)
-
-    infix fun Int.minus(other: Int) = this.minus(other)
-
-    infix fun Int.times(other: Int) = this.times(other)
-
-    infix fun Int.div(other: Int): Int {
+    private fun Int.checkAndDiv(other: Int): Int {
         require(other != ZERO) { CANNOT_DIVIDE_BY_ZERO.message }
         return this.div(other)
     }
