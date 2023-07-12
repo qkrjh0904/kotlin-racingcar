@@ -2,7 +2,7 @@ import io.kotest.assertions.throwables.shouldThrowExactly
 import io.kotest.assertions.throwables.shouldThrowWithMessage
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
-import objects.StringCalculator
+import step2.objects.StringCalculator
 
 class StringCalculatorTest : BehaviorSpec({
 

@@ -1,14 +1,14 @@
-package objects
+package step2.objects
 
-import enums.ErrorMessage.CANNOT_DIVIDE_BY_ZERO
-import enums.ErrorMessage.EXPRESSION_CANNOT_BE_EMPTY
-import enums.ErrorMessage.EXPRESSION_COUNT_SHOULD_BE_ODD
-import enums.ErrorMessage.NOT_A_NUMBER
-import enums.Operator
-import enums.Operator.DIV
-import enums.Operator.MINUS
-import enums.Operator.PLUS
-import enums.Operator.TIMES
+import step2.enums.ErrorMessage.CANNOT_DIVIDE_BY_ZERO
+import step2.enums.ErrorMessage.EXPRESSION_CANNOT_BE_EMPTY
+import step2.enums.ErrorMessage.EXPRESSION_COUNT_SHOULD_BE_ODD
+import step2.enums.ErrorMessage.NOT_A_NUMBER
+import step2.enums.Operator
+import step2.enums.Operator.DIV
+import step2.enums.Operator.MINUS
+import step2.enums.Operator.PLUS
+import step2.enums.Operator.TIMES
 
 private const val ZERO = 0.0
 

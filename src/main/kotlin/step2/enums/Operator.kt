@@ -1,4 +1,4 @@
-package enums
+package step2.enums
 
 enum class Operator(
     val operator: String
