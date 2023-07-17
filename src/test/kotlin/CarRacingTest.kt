@@ -20,7 +20,7 @@ class CarRacingTest : BehaviorSpec({
     }
 
     Given("0 이하의 숫자를 넣는다.") {
-        val mockInput = "-1"
+        val mockInput = "0"
         val inputStream = ByteArrayInputStream(mockInput.toByteArray())
         System.setIn(inputStream)
 
