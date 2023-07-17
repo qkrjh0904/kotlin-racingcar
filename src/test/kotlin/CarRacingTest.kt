@@ -39,8 +39,8 @@ class CarRacingTest : BehaviorSpec({
         System.setIn(inputStream)
 
         When("입력을 받고 유효성 체크를 한다.") {
-            Then("IllegalArgumentException 이 발생한다.") {
-                shouldThrowExactly<IllegalArgumentException> {
+            Then("NumberFormatException 이 발생한다.") {
+                shouldThrowExactly<NumberFormatException> {
                     InputDevice.input()
                 }
             }
