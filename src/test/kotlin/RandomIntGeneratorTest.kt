@@ -9,7 +9,6 @@ class RandomIntGeneratorTest : BehaviorSpec({
             val num = RandomIntGenerator.generate()
             Then("0 에서 9 사이의 숫자가 생성된다.") {
                 num shouldBeInRange IntRange(0, 9)
-
             }
         }
     }
