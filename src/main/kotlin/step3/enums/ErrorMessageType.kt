@@ -1,4 +1,4 @@
-package step3
+package step3.enums
 
 enum class ErrorMessageType(
     val message: String

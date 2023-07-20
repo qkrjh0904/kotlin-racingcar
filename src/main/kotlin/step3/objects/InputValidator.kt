@@ -1,7 +1,7 @@
 package step3.objects
 
-import step3.ErrorMessageType.INPUT_CANNOT_BE_EMPTY
-import step3.ErrorMessageType.INPUT_SHOULD_BE_A_POSITIVE_NUMBER
+import step3.enums.ErrorMessageType.INPUT_CANNOT_BE_EMPTY
+import step3.enums.ErrorMessageType.INPUT_SHOULD_BE_A_POSITIVE_NUMBER
 
 class InputValidator {
     companion object {

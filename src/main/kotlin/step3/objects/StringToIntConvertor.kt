@@ -1,6 +1,6 @@
 package step3.objects
 
-import step3.ErrorMessageType
+import step3.enums.ErrorMessageType
 
 class StringToIntConvertor {
     companion object {
